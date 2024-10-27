@@ -68,6 +68,22 @@ namespace Simulator
                 level++;
             }
         }
+        public void Go(Direction direction)
+        {
+            string dir = (char)(direction.ToString()[0] + 32) + direction.ToString().Substring(1);
+            Console.WriteLine ($"{Name} goes {dir}.");
+        }
+        public void Go(Direction[] directions)
+        {
+            foreach (var direction in directions)
+            {
+                this.Go(direction);
+            }
+        }
+        public void Go(string directions)
+        {
+            this.Go(DirectionParser.Parse(directions));
+        }
     }
 }
 
