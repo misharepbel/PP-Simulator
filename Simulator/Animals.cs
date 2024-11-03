@@ -7,33 +7,20 @@ namespace Simulator
     public class Animals
     {
         private string description = "Capybaras";
-        private uint size;
+        private uint size=3;
         public required string Description
         {
             get => description;
-            init
-            {
-                value = value.Trim();
-                if (value.Length > 15)
-                {
-                    value = value.Substring(0, 15);
-                }
-                value = value.TrimEnd();
-                if (value.Length < 3)
-                {
-                    value += new String('#', 3 - value.Length);
-                }
-                if (value[0] is >= 'a' and <= 'z')
-                {
-                    value = (char)(value[0] - 32) + value.Substring(1);
-                }
-                description = value;
-            }
+            init => description = Validator.Shortener(value, 3, 15, '#');
         }
         public uint Size { get; set; } = 3;
-        public string Info
+        public virtual string Info
         {
             get { return $"{Description} <{Size}>"; }
+        }
+        public override string ToString()
+        {
+            return $"{this.GetType().Name.ToUpper()}: {this.Info}";
         }
     }
 }

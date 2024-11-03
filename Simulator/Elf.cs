@@ -13,27 +13,17 @@ namespace Simulator
         public int Agility
         {
             get => agility;
-            init
-            {
-                if (value < 0)
-                {
-                    agility = 0;
-                }
-                else if (value > 10)
-                {
-                    agility = 10;
-                }
-                else
-                {
-                    agility = value;
-                }
-            }
+            init => agility = Validator.Limiter(value, 0, 10);
+        }
+        public override string Info
+        {
+            get { return $"{Name} [{Level}][{Agility}]"; }
         }
         public override int Power
         {
             get { return (7*Level+3*Agility); }
         }
-        override public void SayHi()
+        public override void SayHi()
         {
             Console.WriteLine($"Hi, I'm {Name}, my level is {Level}. My agility is {Agility}.");
         }
@@ -41,7 +31,7 @@ namespace Simulator
         {
             Console.WriteLine($"{Name} is singing.");
             actionState++;
-            if (actionState % 3 == 0 && agility < 10)
+            if (actionState%3==0 && agility<10)
             {
                 agility++;
             }

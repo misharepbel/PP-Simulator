@@ -14,27 +14,17 @@ namespace Simulator
         public int Rage
         {
             get => rage;
-            init
-            {
-                if (value < 0)
-                {
-                    rage = 0;
-                }
-                else if (value > 10)
-                {
-                    rage = 10;
-                }
-                else
-                {
-                    rage = value;
-                }
-            }
+            init => rage = Validator.Limiter(value, 0, 10);
+        }
+        public override string Info
+        {
+            get { return $"{Name} [{Level}][{Rage}]"; }
         }
         public override int Power
         {
             get { return (8 * Level + 2 * Rage); }
         }
-        override public void SayHi()
+        public override void SayHi()
         {
             Console.WriteLine($"Hi, I'm {Name}, my level is {Level}. My rage is {Rage}.");
         }
