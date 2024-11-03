@@ -2,10 +2,11 @@
 
 namespace Simulator
 {
-    public class Creature
+    public abstract class Creature
     {
         private string name = "Unknown";
-        private int level;
+        private int level=1;
+        protected int actionState=0;
         public Creature() { }
         public Creature(string name, int level=1)
         {
@@ -57,10 +58,8 @@ namespace Simulator
         {
             get { return $"{Name} [{Level}]"; }
         }
-        public void SayHi()
-        {
-            Console.WriteLine($"Hi, I'm {Name}, my level is {Level}.");
-        }
+        public abstract int Power { get; }
+        public abstract void SayHi();
         public void Upgrade()
         {
             if (level<10)
