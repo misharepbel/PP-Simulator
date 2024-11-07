@@ -1,61 +1,66 @@
-﻿namespace Simulator;
+﻿using System.Security.Cryptography;
+
+namespace Simulator;
 
 internal class Program
 {
-    static void Lab4a()
+    private static void Lab5a()
     {
-        Console.WriteLine("HUNT TEST\n");
-        var o = new Orc() { Name = "Gorbag", Rage = 7 };
-        o.SayHi();
-        for (int i = 0; i < 10; i++)
+        Point p1 = new(10, 25);
+        Point p2 = new(-4, 3);
+        try
         {
-            o.Hunt();
-            o.SayHi();
+            Console.Write("r1: ");
+            Rectangle r1 = new(-1, -8, -4, -8);
+            Console.WriteLine(r1);
+            Console.WriteLine($"Is p1{p1} in r1({r1})? {(r1.Contains(p1) ? "Yes" : "No")}.");
+            Console.WriteLine($"Is p2{p2} in r1({r1})? {(r1.Contains(p2) ? "Yes" : "No")}.\n");
+        }
+        catch
+        {
+            Console.WriteLine("An error occurred.\n");
+        }
+        try
+        {
+            Console.Write("r2: ");
+            Rectangle r2 = new Rectangle(new Point(1, 3), new Point(11, 43));
+            Console.WriteLine(r2);
+            Console.WriteLine($"Is p1{p1} in r2({r2})? {(r2.Contains(p1) ? "Yes" : "No")}.");
+            Console.WriteLine($"Is p2{p2} in r2({r2})? {(r2.Contains(p2) ? "Yes" : "No")}.\n");
+        }
+        catch
+        {
+            Console.WriteLine("An error occurred.\n");
+        }
+        try
+        {
+            Console.Write("r3: ");
+            Rectangle r3 = new(1, 5, 4, 0);
+            Console.WriteLine(r3);
+            Console.WriteLine($"Is p1{p1} in r3({r3})? {(r3.Contains(p1) ? "Yes" : "No")}.");
+            Console.WriteLine($"Is p2{p2} in r3({r3})? {(r3.Contains(p2) ? "Yes" : "No")}.\n");
+        }
+        catch
+        {
+            Console.WriteLine("An error occurred.\n");
+        }
+        try
+        {
+            Console.Write("r4: ");
+            Rectangle r4 = new(50, 19, -4, -100);
+            Console.WriteLine(r4);
+            Console.WriteLine($"Is p1{p1} in r4({r4})? {(r4.Contains(p1) ? "Yes" : "No")}.");
+            Console.WriteLine($"Is p2{p2} in r4({r4})? {(r4.Contains(p2) ? "Yes" : "No")}.\n");
+        }
+        catch
+        {
+            Console.WriteLine("An error occurred.\n");
         }
 
-        Console.WriteLine("\nSING TEST\n");
-        var e = new Elf("Legolas", agility: 2);
-        e.SayHi();
-        for (int i = 0; i < 10; i++)
-        {
-            e.Sing();
-            e.SayHi();
-        }
-
-        Console.WriteLine("\nPOWER TEST\n");
-        Creature[] creatures = {
-        o,
-        e,
-        new Orc("Morgash", 3, 8),
-        new Elf("Elandor", 5, 3)
-    };
-        foreach (Creature creature in creatures)
-        {
-            Console.WriteLine($"{creature.Name,-15}: {creature.Power}");
-        }
-    }
-    static void Lab4b()
-    {
-        object[] myObjects = {
-        new Animals() { Description = "dogs"},
-        new Birds { Description = "  eagles ", Size = 10 },
-        new Elf("e", 15, -3),
-        new Orc("morgash", 6, 4)
-    };
-        Console.WriteLine("\nMy objects:");
-        foreach (var o in myObjects) Console.WriteLine(o);
-        /*
-            My objects:
-            ANIMALS: Dogs <3>
-            BIRDS: Eagles (fly+) <10>
-            ELF: E## [10][0]
-            ORC: Morgash [6][4]
-        */
     }
     static void Main(string[] args)
     {
         Console.WriteLine("Starting Simulator!\n");
-        Lab4a();
-        Lab4b();
+        Lab5a();
     }
 }
