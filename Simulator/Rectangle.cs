@@ -1,4 +1,4 @@
-﻿using Simulator;
+﻿namespace Simulator;
 
 public class Rectangle
 {
