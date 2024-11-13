@@ -2,33 +2,29 @@
 
 public class SmallSquareMap : Map
 {
+    private int size;
+    private Rectangle check;
     public SmallSquareMap(int size)
     {
-        try
+        if (size < 5)
         {
-            if (size < 5)
-            {
-                throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that small.");
-            }
-            if (size > 20)
-            {
-                throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that big.");
-            }
+            throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that small.");
         }
-        catch(ArgumentOutOfRangeException e)
+        if (size > 20)
         {
-            Console.WriteLine(e.Message);
-            throw;
+            throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that big.");
         }
-        Size = size;
+        check = new(0, 0, size - 1, size - 1);
+        this.size = size;
     }
-    public int Size { get; }
+    public int Size
+    {
+        get => size;
+    }
     public override bool Exist(Point p)
     {
-        Rectangle check = new(0, 0, Size-1, Size-1);
         return check.Contains(p);
     }
-
     public override Point Next(Point p, Direction d)
     {
         return d switch

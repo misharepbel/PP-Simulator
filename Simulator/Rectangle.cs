@@ -2,33 +2,24 @@
 
 public class Rectangle
 {
-	public bool exceptionFlag = false;
 	public Rectangle(int x1, int y1, int x2, int y2)
 	{
-		try
+		if (x1 == x2 || y1 == y2)
 		{
-			if (x1 == x2 || y1 == y2)
-			{
-				throw new ArgumentException("Couldn't create rectangle. It's a line!");
-			}
-			if (x1 > x2)
-			{
-                (x1, x2) = (x2, x1);
-            }
-            if (y1 > y2)
-			{
-                (y1, y2) = (y2, y1);
-            }
-            X1 = x1;
-            Y1 = y1;
-            X2 = x2;
-            Y2 = y2;
-        }
-		catch (ArgumentException exc)
+			throw new ArgumentException("Couldn't create rectangle. It's a line!");
+		}
+		if (x1 > x2)
 		{
-			Console.WriteLine(exc.Message);
-            throw;
+            (x1, x2) = (x2, x1);
         }
+        if (y1 > y2)
+		{
+            (y1, y2) = (y2, y1);
+        }
+        X1 = x1;
+        Y1 = y1;
+        X2 = x2;
+        Y2 = y2;
 	}
 	public Rectangle(Point p1, Point p2) : this(p1.X, p1.Y, p2.X, p2.Y) { }
 	public readonly int X1, Y1;

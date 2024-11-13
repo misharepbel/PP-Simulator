@@ -27,7 +27,7 @@ public abstract class Creature
     {
         return $"{this.GetType().Name.ToUpper()}: {this.Info}";
     }
-    public abstract void SayHi();
+    public abstract string Greeting();
     public void Upgrade()
     {
         if (level<10)
@@ -35,21 +35,23 @@ public abstract class Creature
             level++;
         }
     }
-    public void Go(Direction direction)
+    public string Go(Direction direction)
     {
-        string dir = (char)(direction.ToString()[0] + 32) + direction.ToString().Substring(1);
-        Console.WriteLine ($"{Name} goes {dir}.");
+        string dir = Char.ToLower(direction.ToString()[0]) + direction.ToString().Substring(1);
+        return $"{Name} goes {dir}.";
     }
-    public void Go(Direction[] directions)
+    public string[] Go(Direction[] directions)
     {
-        foreach (var direction in directions)
+        var strings = new string[directions.Length];
+        for (int i = 0; i < directions.Length; i++)
         {
-            this.Go(direction);
+            strings[i] = this.Go(directions[i]);
         }
+        return strings;
     }
-    public void Go(string directions)
+    public string[] Go(string directions)
     {
-        this.Go(DirectionParser.Parse(directions));
+        return this.Go(DirectionParser.Parse(directions));
     }
 }
 

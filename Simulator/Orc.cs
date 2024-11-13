@@ -21,13 +21,13 @@ public class Orc : Creature
     {
         get { return (8 * Level + 2 * Rage); }
     }
-    public override void SayHi()
+    public override string Greeting()
     {
-        Console.WriteLine($"Hi, I'm {Name}, my level is {Level}. My rage is {Rage}.");
+        return $"Hi, I'm {Name}, my level is {Level}. My rage is {Rage}.";
     }
     public void Hunt()
     {
-        Console.WriteLine($"{Name} is hunting.");
+        //Console.WriteLine($"{Name} is hunting.");
         actionState++;
         if (actionState%2==0 && rage<10)
         {

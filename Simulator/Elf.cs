@@ -21,13 +21,13 @@ public class Elf : Creature
     {
         get { return (7*Level+3*Agility); }
     }
-    public override void SayHi()
+    public override string Greeting()
     {
-        Console.WriteLine($"Hi, I'm {Name}, my level is {Level}. My agility is {Agility}.");
+        return $"Hi, I'm {Name}, my level is {Level}. My agility is {Agility}.";
     }
     public void Sing()
     {
-        Console.WriteLine($"{Name} is singing.");
+        //Console.WriteLine($"{Name} is singing.");
         actionState++;
         if (actionState%3==0 && agility<10)
         {
