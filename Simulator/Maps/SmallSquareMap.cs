@@ -2,8 +2,7 @@
 
 public class SmallSquareMap : Map
 {
-    private int size;
-    private Rectangle check;
+    private readonly Rectangle check;
     public SmallSquareMap(int size)
     {
         if (size < 5)
@@ -14,13 +13,10 @@ public class SmallSquareMap : Map
         {
             throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that big.");
         }
-        check = new(0, 0, size - 1, size - 1);
-        this.size = size;
+        Size = size;
+        check = new(0, 0, Size - 1, Size - 1);
     }
-    public int Size
-    {
-        get => size;
-    }
+    public int Size { get; }
     public override bool Exist(Point p)
     {
         return check.Contains(p);

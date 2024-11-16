@@ -6,7 +6,7 @@ public class Rectangle
 	{
 		if (x1 == x2 || y1 == y2)
 		{
-			throw new ArgumentException("Couldn't create rectangle. It's a line!");
+			throw new ArgumentException("Couldn't create rectangle. It's flat in at least one dimension.");
 		}
 		if (x1 > x2)
 		{
