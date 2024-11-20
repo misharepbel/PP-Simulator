@@ -1,26 +1,9 @@
 ﻿namespace Simulator.Maps;
 
-public class SmallSquareMap : Map
+public class SmallSquareMap : SmallMap
 {
-    private readonly Rectangle check;
-    public SmallSquareMap(int size)
-    {
-        if (size < 5)
-        {
-            throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that small.");
-        }
-        if (size > 20)
-        {
-            throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that big.");
-        }
-        Size = size;
-        check = new(0, 0, Size - 1, Size - 1);
-    }
+    public SmallSquareMap(int size) : base(size, size) { }
     public int Size { get; }
-    public override bool Exist(Point p)
-    {
-        return check.Contains(p);
-    }
     public override Point Next(Point p, Direction d)
     {
         return d switch

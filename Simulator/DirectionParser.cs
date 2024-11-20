@@ -2,9 +2,9 @@
 
 public static class DirectionParser
 {
-    public static Direction[] Parse(string directions)
+    public static List<Direction> Parse(string directions)
     {
-        List<Direction> dirs = new List<Direction>();
+        List<Direction> dirs = [];
         for (int i = 0; i < directions.Length; i++)
         {
             switch (directions[i])
@@ -33,6 +33,6 @@ public static class DirectionParser
                     continue;
             }
         }
-        return dirs.ToArray();
+        return dirs;
     }
 }

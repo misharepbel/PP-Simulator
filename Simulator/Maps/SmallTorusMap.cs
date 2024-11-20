@@ -1,26 +1,8 @@
 ﻿namespace Simulator.Maps;
-public class SmallTorusMap : Map
+public class SmallTorusMap : SmallMap
 {
-    private readonly Rectangle check;
-    public SmallTorusMap(int size)
-    {
-        if (size < 5)
-        {
-            throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that small.");
-        }
-        if (size > 20)
-        {
-            throw new ArgumentOutOfRangeException(nameof(size), "Can't create a map that big.");
-        }
-        Size = size;
-        check = new(0, 0, Size - 1, Size - 1);
-    }
+    public SmallTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
     public int Size { get; }
-    public override bool Exist(Point p)
-    {
-        return check.Contains(p);
-    }
-
     public override Point Next(Point p, Direction d)
     {
         return d switch
