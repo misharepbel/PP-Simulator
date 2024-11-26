@@ -1,15 +1,23 @@
-﻿namespace Simulator;
+﻿using Simulator.Maps;
+namespace Simulator;
 
 public abstract class Creature
 {
     private string name = "Unknown";
     private int level=1;
     protected int actionState=0;
+    public Map? Map { get; private set; }
+    public Point Position { get; private set; }
     public Creature() { }
-    public Creature(string name, int level=1)
+    public Creature(string name, int level = 1)
     {
         Name = name;
         Level = level;
+    }
+    public void InitializeMapAndPosition(Map map, Point position)
+    {
+        Map = map;
+        Position = position;
     }
     public string Name
     {
@@ -35,23 +43,17 @@ public abstract class Creature
             level++;
         }
     }
-    public string Go(Direction direction)
+    /// <summary>
+    /// Go in a direction according to the rules of the map the creature is on.
+    /// </summary>
+    public void Go(Direction direction)
     {
-        string dir = Char.ToLower(direction.ToString()[0]) + direction.ToString().Substring(1);
-        return $"{Name} goes {dir}.";
-    }
-    public string[] Go(Direction[] directions)
-    {
-        var strings = new string[directions.Length];
-        for (int i = 0; i < directions.Length; i++)
+        if (Map is not null)
         {
-            strings[i] = this.Go(directions[i]);
+            Point newPosition = Map.Next(Position, direction);
+            Map.Move(this, Position, newPosition);
+            Position = newPosition;
         }
-        return strings;
-    }
-    public string[] Go(string directions)
-    {
-        return this.Go(DirectionParser.Parse(directions));
     }
 }
 
