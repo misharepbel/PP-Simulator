@@ -1,7 +1,7 @@
 ﻿using Simulator.Maps;
 namespace Simulator;
 
-public abstract class Creature
+public abstract class Creature : IMappable
 {
     private string name = "Unknown";
     private int level=1;

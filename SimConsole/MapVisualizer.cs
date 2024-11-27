@@ -46,7 +46,7 @@ public class MapVisualizer
             for (int j = 0; j < map.SizeX; j++)
             {
                 Console.Write(Box.Vertical);
-                List<Creature> field = map.At(j, i);
+                List<IMappable> field = map.At(j, i);
                 if (field.Count == 1)
                 {
                     if (field.ElementAt(0) is Elf)
