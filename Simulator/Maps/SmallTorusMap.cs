@@ -2,15 +2,15 @@
 public class SmallTorusMap : SmallMap
 {
     public SmallTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
-    public int Size { get; }
+
     public override Point Next(Point p, Direction d)
     {
         return d switch
         {
-            Direction.Up => new Point(p.X, (p.Y + 1) % Size),
-            Direction.Down => p.Y == 0 ? new Point(p.X, Size-1) : p.Next(d),
-            Direction.Right => new Point((p.X + 1) % Size, p.Y),
-            Direction.Left => p.X == 0 ? new Point(Size - 1, p.Y) : p.Next(d),
+            Direction.Up => new Point(p.X, (p.Y + 1) % SizeY),
+            Direction.Down => p.Y == 0 ? new Point(p.X, SizeY-1) : p.Next(d),
+            Direction.Right => new Point((p.X + 1) % SizeX, p.Y),
+            Direction.Left => p.X == 0 ? new Point(SizeX - 1, p.Y) : p.Next(d),
             _ => default,
         };
     }
@@ -19,10 +19,10 @@ public class SmallTorusMap : SmallMap
     {
         return d switch
         {
-            Direction.Up => new Point((p.X + 1) % Size, (p.Y + 1) % Size),
-            Direction.Down => new Point(p.X == 0 ? Size - 1 : p.X - 1, p.Y == 0 ? Size - 1 : p.Y - 1),
-            Direction.Right => new Point((p.X + 1) % Size, p.Y == 0 ? Size - 1 : p.Y - 1),
-            Direction.Left => new Point(p.X == 0 ? Size - 1 : p.X - 1, (p.Y + 1) % Size),
+            Direction.Up => new Point((p.X + 1) % SizeX, (p.Y + 1) % SizeY),
+            Direction.Down => new Point(p.X == 0 ? SizeX - 1 : p.X - 1, p.Y == 0 ? SizeY - 1 : p.Y - 1),
+            Direction.Right => new Point((p.X + 1) % SizeX, p.Y == 0 ? SizeY - 1 : p.Y - 1),
+            Direction.Left => new Point(p.X == 0 ? SizeX - 1 : p.X - 1, (p.Y + 1) % SizeY),
             _ => default,
         };
     }

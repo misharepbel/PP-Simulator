@@ -21,6 +21,9 @@ public class Elf : Creature
     {
         get { return (7*Level+3*Agility); }
     }
+
+    public override char Symbol => 'E';
+
     public override string Greeting()
     {
         return $"Hi, I'm {Name}, my level is {Level}. My agility is {Agility}.";

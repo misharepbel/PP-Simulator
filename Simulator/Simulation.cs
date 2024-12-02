@@ -82,14 +82,14 @@ public class Simulation
     public void Turn()
     {
         thisMove++;
+        if (thisMove == _moves.Count)
+        {
+            Finished = true;
+        }
         if (Finished)
         {
             throw new Exception("Simulation has finished!");
         }
         CurrentMappable.Go(_moves.ElementAt(thisMove));
-        if (thisMove == _moves.Count-1)
-        {
-            Finished = true;
-        }
     }
 }

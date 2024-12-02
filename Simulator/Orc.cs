@@ -21,6 +21,9 @@ public class Orc : Creature
     {
         get { return (8 * Level + 2 * Rage); }
     }
+
+    public override char Symbol => 'O';
+
     public override string Greeting()
     {
         return $"Hi, I'm {Name}, my level is {Level}. My rage is {Rage}.";

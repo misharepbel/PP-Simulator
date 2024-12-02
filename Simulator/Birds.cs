@@ -7,4 +7,23 @@ public class Birds : Animals
     {
         get { return $"{Description} (fly{(CanFly ? '+' : '-')}) <{Size}>"; }
     }
+    public override char Symbol => CanFly ? 'B' : 'b';
+    public override void Go(Direction direction)
+    {
+        if (Map is not null)
+        {
+            if (CanFly)
+            {
+                Point newPosition = Map.Next(Map.Next(Position, direction), direction);
+                Map.Move(this, Position, newPosition);
+                Position = newPosition;
+            }
+            else
+            {
+                Point newPosition = Map.NextDiagonal(Position, direction);
+                Map.Move(this, Position, newPosition);
+                Position = newPosition;
+            }
+        }
+    }
 }

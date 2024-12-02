@@ -49,14 +49,7 @@ public class MapVisualizer
                 List<IMappable> field = map.At(j, i);
                 if (field.Count == 1)
                 {
-                    if (field.ElementAt(0) is Elf)
-                    {
-                        Console.Write('E');
-                    }
-                    else
-                    {
-                        Console.Write('O');
-                    }
+                    Console.Write(field.ElementAt(0).Symbol);
                 }
                 else if (field.Count > 1)
                 {
@@ -83,7 +76,7 @@ public class MapVisualizer
         //Bottom
         Console.Write(Box.BottomLeft);
         Console.Write(Box.Horizontal);
-        for (int i = 1; i < map.SizeY; i++)
+        for (int i = 1; i < map.SizeX; i++)
         {
             Console.Write(Box.BottomMid);
             Console.Write(Box.Horizontal);

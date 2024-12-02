@@ -3,7 +3,9 @@
 public interface IMappable
 {
     string Info { get; }
+    Map? Map { get; }
     Point Position { get; }
-    void InitializeMapAndPosition(Map Map, Point position);
+    char Symbol { get; }
+    void InitializeMapAndPosition(Map map, Point position);
     void Go(Direction direction);
 }
