@@ -4,6 +4,12 @@ namespace Simulator;
 
 public class Animals : IMappable
 {
+    public Animals() { }
+    public Animals(string description, uint size)
+    {
+        Description = description;
+        Size = size;
+    }
     private string description = "Capybaras";
 
     public required string Description

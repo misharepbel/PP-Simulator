@@ -2,6 +2,8 @@
 
 public class Birds : Animals
 {
+    public Birds() { }
+    public Birds(string description, uint size, bool canFly) : base(description, size) { CanFly = canFly; }
     public bool CanFly { get; set; } = true;
     public override string Info
     {

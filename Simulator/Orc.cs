@@ -30,7 +30,6 @@ public class Orc : Creature
     }
     public void Hunt()
     {
-        //Console.WriteLine($"{Name} is hunting.");
         actionState++;
         if (actionState%2==0 && rage<10)
         {

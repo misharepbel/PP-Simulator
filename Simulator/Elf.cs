@@ -30,7 +30,6 @@ public class Elf : Creature
     }
     public void Sing()
     {
-        //Console.WriteLine($"{Name} is singing.");
         actionState++;
         if (actionState%3==0 && agility<10)
         {

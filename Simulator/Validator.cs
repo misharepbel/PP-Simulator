@@ -22,7 +22,7 @@ public static class Validator
         value = value.Trim();
         if (value.Length > max)
         {
-            value = value.Substring(0, max);
+            value = value[..max];
         }
         value = value.TrimEnd();
         if (value.Length < min)
@@ -31,7 +31,7 @@ public static class Validator
         }
         if (Char.IsLower(value[0]))
         {
-            value = Char.ToUpper(value[0]) + value.Substring(1);
+            value = Char.ToUpper(value[0]) + value[1..];
         }
         return value;
     }
