@@ -12,10 +12,10 @@ internal class Program
         List<Point> points = [new(2, 2), new(3, 1)];
         string moves = "dlrludl";*/
 
-        SmallTorusMap map = new(8, 6);
+        BigBounceMap map = new(8, 6);
         List<IMappable> mappables = [new Orc("Gorbag"), new Elf("Elandor"), new Animals() { Description = "Rabbits" }, new Birds() { Description = "Eagles", CanFly = true}, new Birds() { Description = "Ostriches", CanFly = false }];
-        List<Point> points = [new(2, 2), new(3, 1), new(0, 4), new(3, 3), new(5, 2)];
-        string moves = "dxlrl5dru2duodlrdulw";
+        List<Point> points = [new(2, 2), new(3, 1), new(0, 4), new(1, 3), new(7, 3)];
+        string moves = "dddduddddddddddddddd";
 
         Simulation simulation = new(map, mappables, points, moves);
         MapVisualizer mapVisualizer = new(simulation.Map);
@@ -29,17 +29,17 @@ internal class Program
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
                 Console.WriteLine();
-                simulation.Turn();
                 Console.WriteLine($"Turn {turn}:");
                 Console.WriteLine($"{simulation.CurrentMappable.GetType().Name.ToString().ToUpper()}: " +
                     $"{simulation.CurrentMappable.Info} {simulation.CurrentMappable.Position} " +
                     $"goes {simulation.CurrentMoveName}:");
+                simulation.Turn();
                 mapVisualizer.Visualize();
                 turn++;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Simulation has finished!");
                 break;
             }
         }
