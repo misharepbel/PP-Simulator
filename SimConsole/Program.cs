@@ -18,7 +18,13 @@ internal class Program
         string moves = "dddduddddddddddddddd";
 
         Simulation simulation = new(map, mappables, points, moves);
-        MapVisualizer mapVisualizer = new(simulation.Map);
+        SimulationHistory simHist = new(simulation);
+        int[] turns = { 5, 10, 15, 20 };
+        foreach (var turn in turns)
+        {
+            simHist.ShowMove(turn - 1);
+        }
+        /*MapVisualizer mapVisualizer = new(simulation.Map);
         Console.WriteLine("SIMULATION!\n\nStarting positions:");
         mapVisualizer.Visualize();
         int turn = 1;
@@ -42,6 +48,6 @@ internal class Program
                 Console.WriteLine("Simulation has finished!");
                 break;
             }
-        }
+        }*/
     }
 }

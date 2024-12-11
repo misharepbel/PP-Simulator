@@ -43,6 +43,19 @@ public abstract class SmallMap : Map
         fields[position.X, position.Y].Remove(mappable);
     }
     /// <summary>
+    /// Clear the map.
+    /// </summary>
+    public override void Clear()
+    {
+        for (int i = 0; i < SizeX; i++)
+        {
+            for (int j = 0; j < SizeY; j++)
+            {
+                fields[i, j].Clear();
+            }
+        }
+    }
+    /// <summary>
     /// Move a mappable between two points on the map.
     /// </summary>
     /// <param name="mappable">IMappable to move.</param>

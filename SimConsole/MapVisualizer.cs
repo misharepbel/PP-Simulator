@@ -1,6 +1,4 @@
-﻿using Simulator;
-using Simulator.Maps;
-using System.Diagnostics.Tracing;
+﻿using Simulator.Maps;
 namespace SimConsole;
 
 public static class Box
@@ -24,7 +22,7 @@ public static class Box
 
 public class MapVisualizer
 {
-    private Map map;
+    private readonly Map map;
     public MapVisualizer(Map map)
     {
         this.map = map;

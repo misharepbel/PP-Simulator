@@ -45,6 +45,13 @@ public abstract class BigMap : Map
         }
     }
     /// <summary>
+    /// Clear the map.
+    /// </summary>
+    public override void Clear()
+    {
+        fields.Clear();
+    }
+    /// <summary>
     /// Move a mappable between two points on the map.
     /// </summary>
     /// <param name="mappable">IMappable to move.</param>

@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Simulator.Maps;
+﻿namespace Simulator.Maps;
 
 /// <summary>
 /// Map of points.
@@ -26,6 +24,7 @@ public abstract class Map
     public int SizeY { get; }
     public abstract void Add(IMappable mappable, Point position);
     public abstract void Remove(IMappable mappable, Point position);
+    public abstract void Clear();
     public abstract void Move(IMappable mappable, Point start, Point finish);
     public abstract List<IMappable> At(Point position);
     public abstract List<IMappable> At(int x, int y);
