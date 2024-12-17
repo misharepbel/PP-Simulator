@@ -1,6 +1,4 @@
-﻿using Simulator.Maps;
-
-namespace Simulator;
+﻿namespace Simulator;
 
 public class SimulationHistory
 {
@@ -19,26 +17,40 @@ public class SimulationHistory
         Run();
     }
 
+    private Dictionary<Point, char> findSymbols()
+    {
+        var symbols = new Dictionary<Point, char>();
+        foreach (var mappable in _simulation.Mappables)
+        {
+            if (symbols.ContainsKey(mappable.Position))
+            {
+                symbols[mappable.Position] = 'X';
+            }
+            else
+            {
+                symbols.Add(mappable.Position, mappable.Symbol);
+            }
+        }
+        return symbols;
+    }
+
     private void Run()
     {
+        var symbols = findSymbols();
+        SimulationTurnLog simulationTurnLog = new()
+        {
+            Mappable = new Orc(),
+            Move = "",
+            Symbols = symbols
+        };
+        TurnLogs.Add(simulationTurnLog);
         while (true)
         {
             try
             {
                 _simulation.Turn();
-                var symbols = new Dictionary<Point, char>();
-                foreach (var mappable in _simulation.Mappables)
-                {
-                    if (symbols.ContainsKey(mappable.Position))
-                    {
-                        symbols[mappable.Position] = 'X';
-                    }
-                    else
-                    {
-                        symbols.Add(mappable.Position, mappable.Symbol);
-                    }
-                }
-                SimulationTurnLog simulationTurnLog = new() { Mappable = _simulation.CurrentMappable.ToString(),
+                symbols = findSymbols();
+                simulationTurnLog = new() { Mappable = _simulation.CurrentMappable,
                     Move = _simulation.CurrentMoveName, Symbols = symbols }; 
                 TurnLogs.Add(simulationTurnLog);
             }

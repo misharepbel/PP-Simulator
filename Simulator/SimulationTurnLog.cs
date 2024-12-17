@@ -1,4 +1,6 @@
-﻿namespace Simulator;
+﻿using Simulator.Maps;
+
+namespace Simulator;
 
 /// <summary>
 /// State of map after single simulation turn.
@@ -9,7 +11,7 @@ public class SimulationTurnLog
     /// Text representastion of moving object in this turn.
     /// CurrentMappable.ToString()
     /// </summary>
-    public required string Mappable { get; init; }
+    public required IMappable Mappable { get; init; }
     /// <summary>
     /// Text representation of move in this turn.
     /// CurrentMoveName.ToString();
