@@ -1,12 +1,11 @@
 ﻿using Simulator.Maps;
-using System.Net.WebSockets;
 
 namespace Simulator;
 
 public class Simulation
 {
-    private List<Direction> _moves;
-    private int thisMove = 0;
+    private readonly List<Direction> _moves;
+    private int thisMove = -1;
     /// <summary>
     /// Simulation's map.
     /// </summary>
@@ -21,22 +20,6 @@ public class Simulation
     /// Starting positions of mappables.
     /// </summary>
     public List<Point> Positions { get; }
-
-    /// <summary>
-    /// Current positions of mappables.
-    /// </summary>
-    public List<Point> CurrentPositions
-    {
-        get
-        {
-            List<Point> result = new List<Point>();
-            foreach (var mappable in Mappables)
-            {
-                result.Add(mappable.Position);
-            }
-            return result;
-        }
-    }
 
     /// <summary>
     /// Cyclic list of mappables moves. 
@@ -58,25 +41,9 @@ public class Simulation
     public IMappable CurrentMappable { get => Mappables.ElementAt(thisMove % Mappables.Count); }
 
     /// <summary>
-    /// Mappable which is moving at a specified turn.
-    /// </summary>
-    public IMappable MappableAt(int turnStamp)
-    {
-        return Mappables.ElementAt(turnStamp % Mappables.Count);
-    }
-
-    /// <summary>
     /// Lowercase name of direction which will be used in current turn.
     /// </summary>
     public string CurrentMoveName { get => _moves.ElementAt(thisMove).ToString().ToLower(); }
-
-    /// <summary>
-    /// Lowercase name of direction which will be used in current turn.
-    /// </summary>
-    public string MoveNameAt(int turnStamp)
-    {
-        return _moves.ElementAt(turnStamp).ToString().ToLower();
-    }
 
     /// <summary>
     /// Simulation constructor.
@@ -114,12 +81,16 @@ public class Simulation
 
     public void Turn()
     {
+        thisMove++;
+        if (thisMove == _moves.Count)
+        {
+            Finished = true;
+        }
         if (Finished)
         {
             throw new Exception("Simulation has finished!");
         }
         CurrentMappable.Go(_moves.ElementAt(thisMove));
-        thisMove++;
         if (thisMove == _moves.Count)
         {
             Finished = true;
