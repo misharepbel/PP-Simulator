@@ -44,7 +44,7 @@ public class Animals : IMappable
         Position = position;
     }
 
-    public override string ToString()
+    new public string ToString()
     {
         return $"{this.GetType().Name.ToUpper()}: {this.Info}";
     }

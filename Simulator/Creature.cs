@@ -34,7 +34,7 @@ public abstract class Creature : IMappable
 
     public abstract char Symbol { get; }
 
-    public override string ToString()
+    new public string ToString()
     {
         return $"{this.GetType().Name.ToUpper()}: {this.Info}";
     }
