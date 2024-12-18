@@ -1,4 +1,5 @@
 ﻿using Simulator.Maps;
+using Simulator;
 namespace SimConsole;
 
 public class MapVisualizer

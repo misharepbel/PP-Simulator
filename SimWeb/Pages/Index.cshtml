@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+<h1>SIMULATION</h1>
+<h2>Turn: @Model.TurnStamp</h2>
+<div>
+    <p>
+        @Model.Grid
+    </p>
+</div>
+<form asp-page-handler="Previous" method="post">
+    <button>Previous</button>
+</form>
+<form asp-page-handler="Next" method="post">
+    <button>Next</button>
+</form>
