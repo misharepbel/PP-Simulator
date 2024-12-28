@@ -2,9 +2,13 @@
 
 public class BigTorusMap : BigMap
 {
-    public BigTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
+    public BigTorusMap(int sizeX, int sizeY) : base(sizeX, sizeY)
+    {
+        FNext = MapMovement.TorusNext;
+        FNextDiagonal = MapMovement.TorusNextDiagonal;
+    }
 
-    public override Point Next(Point p, Direction d)
+    /*public override Point Next(Point p, Direction d)
     {
         return d switch
         {
@@ -26,5 +30,5 @@ public class BigTorusMap : BigMap
             Direction.Left => new Point(p.X == 0 ? SizeX - 1 : p.X - 1, (p.Y + 1) % SizeY),
             _ => default,
         };
-    }
+    }*/
 }

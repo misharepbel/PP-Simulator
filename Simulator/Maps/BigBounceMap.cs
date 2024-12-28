@@ -2,9 +2,13 @@
 
 public class BigBounceMap : BigMap
 {
-    public BigBounceMap(int sizeX, int sizeY) : base(sizeX, sizeY) { }
+    public BigBounceMap(int sizeX, int sizeY) : base(sizeX, sizeY)
+    {
+        FNext = MapMovement.BounceNext;
+        FNextDiagonal = MapMovement.BounceNextDiagonal;
+    }
 
-    public override Point Next(Point p, Direction d)
+    /*public override Point Next(Point p, Direction d)
     {
         return d switch
         {
@@ -58,5 +62,5 @@ public class BigBounceMap : BigMap
             Direction.Right => Direction.Up,
             _ => default,
         };
-    }
+    }*/
 }
