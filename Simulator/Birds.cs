@@ -1,14 +1,18 @@
-﻿namespace Simulator;
+﻿using System.Text.Json.Serialization;
+
+namespace Simulator;
 
 public class Birds : Animals
 {
     public Birds() { }
     public Birds(string description, uint size, bool canFly) : base(description, size) { CanFly = canFly; }
     public bool CanFly { get; set; } = true;
+    [JsonIgnore]
     public override string Info
     {
         get { return $"{Description} (fly{(CanFly ? '+' : '-')}) <{Size}>"; }
     }
+    [JsonIgnore]
     public override char Symbol => CanFly ? 'B' : 'b';
     public override void Go(Direction direction)
     {

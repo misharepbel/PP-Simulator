@@ -1,4 +1,5 @@
 ﻿using Simulator.Maps;
+using System.Text.Json.Serialization;
 
 namespace Simulator;
 
@@ -18,6 +19,7 @@ public class Animals : IMappable
         init => description = Validator.Shortener(value, 3, 15, '#');
     }
     public uint Size { get; set; } = 3;
+    [JsonIgnore]
     public virtual string Info
     {
         get { return $"{Description} <{Size}>"; }
@@ -26,6 +28,7 @@ public class Animals : IMappable
     public Map? Map { get; private set; }
     public Point Position { get; protected set; }
 
+    [JsonIgnore]
     public virtual char Symbol => 'A';
 
     public virtual void Go(Direction direction)
