@@ -8,17 +8,25 @@
     <link rel="stylesheet" href="~/css/site.css"
           asp-append-version="true" />
     <script src="~/js/site.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Redacted+Script:wght@300;400;700&family=Rubik+Dirt&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <b>Site Name</b>
-        <nav>
+        <nav class="menu">
+            <p class="menu-title">Michael Tryfanau's project</p>
             <a asp-area="" asp-page="/Index">Home</a>
-            <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <a asp-area="" asp-page="/About">About</a>
         </nav>
     </header>
     <main>
         @RenderBody()
     </main>
+    <footer>
+        <p>
+            Michael Tryfanau, 2025.
+        </p>
+    </footer>
 </body>
 </html>
