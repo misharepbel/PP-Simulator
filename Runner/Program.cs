@@ -9,19 +9,27 @@ internal class Program
     {
         var options = new JsonSerializerOptions { WriteIndented = true };
 
-        List<IMappable> mapables = [
-            new Orc("Gorbag", 3, 5),
-            new Elf("Elandor", 2, 7),
-            new Animals { Description = "Rabbits", Size = 10 },
-            new Birds { Description = "Eagles", Size = 15 },
-            new Birds { Description = "Emu", Size = 8, CanFly = false }
-        ];
+        List<IMappable> mappables = [
+            new Creeper("Gorbag", 3, 5),
+            new Human("Elandor", 2, 7),
+      ];
 
-        string json = JsonSerializer.Serialize(mapables, options);
+        BigTorusMap map = new(8, 6);
+        List<Point> points = [new(2, 2), new(3, 1), new(5, 5), new(7, 3), new(0, 4)];
+        string moves = "drudlurudrlull";
+        Simulation simulation = new(map, mappables, points, moves);
+        SimulationHistory SimHist = new(simulation);
+
+
+
+        string json = JsonSerializer.Serialize(SimHist, options);
         Console.WriteLine("\nJSON:");
         Console.WriteLine(json);
 
-        List<IMappable> deserialized =
-            JsonSerializer.Deserialize<List<IMappable>>(json, options)!;
+
+
+        var deserialized =
+            JsonSerializer.Deserialize<SimulationHistory>(json, options)!;
+        Console.WriteLine(deserialized);
     }
 }

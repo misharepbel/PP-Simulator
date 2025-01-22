@@ -1,4 +1,4 @@
-﻿using Simulator.Maps;
+﻿ using Simulator.Maps;
 using Simulator;
 
 namespace SimConsole;
@@ -12,15 +12,15 @@ internal class Program
         List<Point> points = [new(2, 2), new(3, 1)];
         string moves = "dlrludl";*/
 
-        BigTorusMap map = new(8, 6);
-        List<IMappable> mappables = [new Creeper("Gorbag"), new Human("Steve"), new Skeleton("Skeletor"), new Creeper("Nicer"), new Human("Chris")];
-        List<Point> points = [new(2, 2), new(3, 1), new(5, 5), new(7, 3), new(0, 4)];
-        string moves = "dddduddddddulrbddddld";
-
+        BigTorusMap map = new(10, 5);
+        List<IMappable> mappables = [new Creeper("Boomer"), new Human("Steve"), new Human("Genius"), new Animals() { Description = "Sheep", Size = 6 }, new Birds { Description = "Ender Dragon", Size = 1, CanFly = true }];
+        List<Point> points = [new(2, 2), new(3, 1), new(8, 5), new(7, 3), new(0, 4)];
+        string moves = "uuuuu";
         Simulation simulation = new(map, mappables, points, moves);
+        
         SimulationHistory simHist = new(simulation);
         LogVisualizer logVisualizer = new(simHist);
-        int[] turns = { 0, 5, 10, 15, 20 };
+        int[] turns = { 0, 1, 2, 3, 4, 5 };
         foreach (var turn in turns)
         {
             logVisualizer.Draw(turn);
