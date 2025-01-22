@@ -73,7 +73,7 @@ public class Simulation
         }
         Moves = moves;
         _moves = DirectionParser.Parse(Moves);
-    }
+        }
     /// <summary>
     /// Makes one move of current mappable in current direction.
     /// Throw error if simulation is finished.
