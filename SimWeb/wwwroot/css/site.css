@@ -8,47 +8,97 @@ body {
     justify-content: space-around;
     width: 100%;
     font-size: 30px;
-    font-family: 'Jersey 10'
+    font-family: 'Jersey 10';
 }
 .menu-title {
     font-family: 'Rubik Dirt';
     font-weight: 500;
-    margin: 10px
+    margin: 10px;
 }
 .menu a {
     color: #48240c;
     text-decoration: none;
-    transition-duration: 0.3s
+    transition-duration: 0.3s;
 }
 .menu a:hover
 {
     color: #1B007A;
-    font-size: 33px
+    font-size: 33px;
 }
 h1 {
     font-family: 'Rubik Dirt';
     font-weight: 300;
     color: #EDEAB9;
-    font-size: 60px
+    font-size: 60px;
 }
 h2 {
     font-family: 'Jersey 10';
     color: #EDEAB9;
+    letter-spacing: 1px;
 }
 main
 {
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
 }
-.directions-form {
+.main-text {
     font-family: 'Jersey 10';
     font-size: 25px;
-    color: #EDEAB9
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #EDEAB9;
+    margin-bottom: 60px;
+}
+.game-board {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: /*auto auto auto auto auto auto auto auto*/ repeat(var(--columns), 90px);
+    grid-template-rows: /*auto auto auto auto auto auto*/ repeat(var(--rows), 90px);
+    background-image: url('../images/nether_brick_by_fivezero09_d5joqjm-fullview.jpg');
+    filter: brightness(200%);
+}
+.field {
+    border: 1px solid #EDEAB9;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board-icon {
+    max-height: 100%;
+    max-width: 100%;
+    filter: brightness(50%);
 }
 button {
     font-family: 'Jersey 10';
-    font-size: medium
+    font-size: medium;
+}
+.steerers
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+.steerer {
+    font-size: x-large;
+    transition-duration: 0.3s;
+}
+button#go {
+    background-color: #6dcc00;
+    transition-duration: 0.3s;
+}
+button#go:hover {
+    background-color: #17F7FF;
+    font-size: large;
+}
+button#prev:hover
+{
+    background-color: #f60107;
+}
+button#nxt:hover {
+    background-color: #6dcc00;
 }
 footer {
     position: fixed;
@@ -60,5 +110,15 @@ footer {
     justify-content: center;
     color: white;
     font-family: 'Jersey 10';
-    font-size: 15px
+    font-size: 16px;
+}
+.about-links {
+    text-decoration: none;
+    transition-duration: 0.3s;
+    color: #6dcc00;
+}
+.about-links:hover
+{
+    font-size: xx-large;
+    color: beige;
 }

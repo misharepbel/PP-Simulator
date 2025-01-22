@@ -4,6 +4,16 @@
     ViewData["Title"] = "Main project page";
 }
 <h1>@ViewData["Title"]</h1>
-<form class="directions-form" method="get" action="/Simulation">
-    <button type="submit">GO!</button>
-</form>
+<div class="main-text">
+    <form class="directions-form" method="get" asp-page="Simulation">
+        <label for="directionInput">Enter the Directions (d, u, l, r only):</label>
+        <input type="text"
+               id="directionInput"
+               name="moves"
+               pattern="[dDuUlLrR]*"
+               title="Only the letters d, u, l, and r (case insensitive) are allowed."
+               maxlength="40"
+               required>
+        <button id="go" type="submit">GO!</button>
+    </form>
+</div>
