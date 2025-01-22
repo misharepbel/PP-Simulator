@@ -28,10 +28,10 @@ internal static class MapMovement
     {
         return d switch
         {
-            Direction.Up => p.Y == map.SizeY - 1 ? p : p.Next(d),
-            Direction.Down => p.Y == 0 ? p : p.Next(d),
-            Direction.Right => p.X == map.SizeX - 1 ? p : p.Next(d),
-            Direction.Left => p.X == 0 ? p : p.Next(d),
+            Direction.Up => p.Y == map.SizeY - 1 ? new Point(p.X, 0) : p.Next(d),
+            Direction.Down => p.Y == 0 ? new Point(p.X, map.SizeY-1) : p.Next(d),
+            Direction.Right => p.X == map.SizeX - 1 ? new Point(0, p.Y) : p.Next(d),
+            Direction.Left => p.X == 0 ? new Point(map.SizeX - 1, p.Y) : p.Next(d),
             _ => default,
         };
     }
@@ -39,10 +39,10 @@ internal static class MapMovement
     {
         return d switch
         {
-            Direction.Up => p.Y == map.SizeY - 1 || p.X == map.SizeX - 1 ? p : p.NextDiagonal(d),
-            Direction.Down => p.Y == 0 || p.X == 0 ? p : p.NextDiagonal(d),
-            Direction.Right => p.X == map.SizeX - 1 || p.Y == 0 ? p : p.NextDiagonal(d),
-            Direction.Left => p.X == 0 || p.Y == map.SizeY - 1 ? p : p.NextDiagonal(d),
+            Direction.Up => new Point((p.X+1)%map.SizeX, (p.Y + 1) % map.SizeY),
+            Direction.Down => new Point((p.X==0 ? map.SizeX-1 : p.X-1), (p.Y == 0 ? map.SizeY - 1 : p.Y - 1)),
+            Direction.Right => new Point((p.X + 1) % map.SizeX, (p.Y == 0 ? map.SizeY - 1 : p.Y - 1)),
+            Direction.Left => new Point(p.X == 0 ? map.SizeX - 1 : p.X - 1, (p.Y + 1) % map.SizeY),
             _ => default,
         };
     }
