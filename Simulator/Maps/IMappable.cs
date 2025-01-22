@@ -3,10 +3,8 @@
 namespace Simulator.Maps;
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "Type")]
-[JsonDerivedType(typeof(Elf), nameof(Elf))]
-[JsonDerivedType(typeof(Orc), nameof(Orc))]
-[JsonDerivedType(typeof(Animals), nameof(Animals))]
-[JsonDerivedType(typeof(Birds), nameof(Birds))]
+[JsonDerivedType(typeof(Human), nameof(Human))]
+[JsonDerivedType(typeof(Creeper), nameof(Creeper))]
 public interface IMappable
 {
     string Info { get; }

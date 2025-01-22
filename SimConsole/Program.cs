@@ -8,12 +8,12 @@ internal class Program
     static void Main(string[] args)
     {
         /*SmallSquareMap map = new(5);
-        List<IMappable> mappables = [new Orc("Gorbag"), new Elf("Elandor")];
+        List<IMappable> mappables = [new Creeper("Gorbag"), new Human("Elandor")];
         List<Point> points = [new(2, 2), new(3, 1)];
         string moves = "dlrludl";*/
 
         BigTorusMap map = new(8, 6);
-        List<IMappable> mappables = [new Orc("Gorbag"), new Elf("Elandor"), new Animals() { Description = "Rabbits" }, new Birds() { Description = "Eagles", CanFly = true}, new Birds() { Description = "Ostriches", CanFly = false }];
+        List<IMappable> mappables = [new Creeper("Gorbag"), new Human("Steve"), new Skeleton("Skeletor"), new Creeper("Nicer"), new Human("Chris")];
         List<Point> points = [new(2, 2), new(3, 1), new(5, 5), new(7, 3), new(0, 4)];
         string moves = "dddduddddddulrbddddld";
 

@@ -39,7 +39,7 @@ public class SimulationHistory
         var symbols = findSymbols();
         SimulationTurnLog simulationTurnLog = new()
         {
-            Mappable = new Orc(),
+            Mappable = new Creeper(),
             Move = "",
             Symbols = symbols
         };

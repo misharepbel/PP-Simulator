@@ -3,13 +3,12 @@ using System.Text.Json.Serialization;
 namespace Simulator;
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "Type")]
-[JsonDerivedType(typeof(Elf), nameof(Elf))]
-[JsonDerivedType(typeof(Orc), nameof(Orc))]
+[JsonDerivedType(typeof(Human), nameof(Human))]
+[JsonDerivedType(typeof(Creeper), nameof(Creeper))]
 public abstract class Creature : IMappable
 {
     private string name = "Unknown";
     private int level=1;
-    protected int actionState=0;
     public Map? Map { get; private set; }
     public Point Position { get; private set; }
     public Creature() { }
